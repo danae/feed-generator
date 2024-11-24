@@ -1,14 +1,15 @@
 services:
   feedgen:
     build: .
-    image: feedgen
     restart: always
-    links: [db]
     volumes:
       - './db.sqlite:/app/db.sqlite'
-    ports:
-      - '3000:3000'
     environment:
-      - 'FEEDGEN_SQLITE_LOCATION="./db.sqlite"'
+      - 'FEEDGEN_SQLITE_LOCATION="db.sqlite"'
       - 'FEEDGEN_HOSTNAME="bsky.danae.link"'
       - 'FEEDGEN_PUBLISHER_DID="did:plc:eezzekyc5lfabmza2qvrjxc5"'
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.audune-nextcloud.rule=Host(`bsky.danae.link`)'
+      - 'traefik.http.routers.audune-nextcloud.entrypoints=http_public'
+      - 'traefik.http.routers.audune-nextcloud.priority=200'
