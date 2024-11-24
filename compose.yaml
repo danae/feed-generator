@@ -10,6 +10,6 @@ services:
       - 'FEEDGEN_PUBLISHER_DID="did:plc:eezzekyc5lfabmza2qvrjxc5"'
     labels:
       - 'traefik.enable=true'
-      - 'traefik.http.routers.audune-nextcloud.rule=Host(`bsky.danae.link`)'
-      - 'traefik.http.routers.audune-nextcloud.entrypoints=http_public'
-      - 'traefik.http.routers.audune-nextcloud.priority=200'
+      - 'traefik.http.routers.feed-generator.rule=Host(`bsky.danae.link`)'
+      - 'traefik.http.routers.feed-generator.entrypoints=http_public'
+      - 'traefik.http.routers.feed-generator.priority=200'
